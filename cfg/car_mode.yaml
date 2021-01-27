@@ -1,0 +1,90 @@
+---
+car_mode:
+  - # Start should be here
+    StateName: Start
+    Transition:
+      -
+        Key: started
+        Target: Init
+    Parent: ~
+  - # ========== IDLE ========== #
+    StateName: Init
+    Transition:
+      -
+        Key: init_start
+        Target: SensorInit
+    Parent: IDLE
+  -
+    StateName: SensorInit
+    Transition:
+      -
+        Key: sensor_is_ready
+        Target: DriveReady
+    Parent: IDLE
+  -
+    StateName: DriveReady
+    Transition:
+      - # if ego has been assigned a goal, go to RoutePlanning
+        Key: assign_goal
+        Target: RoutePlanning
+      - # if human want to drive manually, go to ManualMode
+        Key: switch_manual_mode
+        Target: ManualMode
+    Parent: IDLE
+  -
+    StateName: ManualMode
+    Transition:
+      - # if human want autonomous drive, go to DriveReady
+        Key:  switch_auto_mode
+        Target: DriveReady
+    Parent: ~
+  -
+    StateName: RoutePlanning
+    Transition:
+      -
+        Key:  found_route
+        Target: WaypointFollowing
+    Parent: IDLE
+  -
+    StateName: WaypointFollowing
+    Transition:
+      - # If ego arrives goal, go back to DriveReady
+        Key:  arrive_goal
+        Target: DriveReady
+      - # If ego needs to overtake, go to Overtaking
+        Key:  overtake
+        Target: Overtaking
+      - # If ego needs to avoid stopped obstacle, go to Avoidance
+        Key:  avoid
+        Target: Avoidance
+      # - # If ego enters intersection, go to Intersection
+      #   Key:  enter_intersection
+      #   Target: Intersection
+      # - # If ego (encounter pede or kick) and (not encounter traffic_cone)
+      #   Key:  encounter_pede_kick
+      #   Target: Pede_Kick
+    Parent: IDLE # ========== IDLE End ========== #
+  - # ========== OVERTAKING ========== #
+    StateName: Overtaking
+    Transition:
+      - # If ego have done overtaking, go back to WaypointFollowing
+        Key: overtake_done
+        Target: WaypointFollowing
+      - # If ego does not have feasible Frenet path, go to Avoidance
+        Key: avoid
+        Target: Avoidance
+    Parent: OVERTAKING # ========== OVERTAKING End ========== #
+  - # ========== AVOIDANCE ========== #
+    StateName: Avoidance
+    Transition:
+      - # If ego have done Avoidance, go back to WaypointFollowing
+        Key: avoid_done
+        Target: WaypointFollowing
+    Parent: AVOIDANCE # ========== AVOIDANCE End ========== #
+  # -
+  #   StateName: AutonomousMode
+  #   Transition:
+  #     -
+  #       Key:  mode_change
+  #       Target: DriveReady
+  #   Parent: ~

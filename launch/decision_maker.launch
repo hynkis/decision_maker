@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="car_mode" default="car_mode.yaml" />
+
+  <!-- <node pkg="ugv_decision_maker" type="ugv_decision_maker_node" name="ugv_decision_maker" output="screen">
+    <param name="ugv_mode" value="$(find ugv_decision_maker)/cfg/$(arg ugv_mode)" />
+  </node> -->
+  <node pkg="decision_maker" type="decision_maker_node" name="decision_maker" output="screen">
+    <param name="car_mode" value="$(find decision_maker)/cfg/$(arg car_mode)" />
+  </node>
+</launch>

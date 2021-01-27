@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>decision_maker</name>
+  <version>1.12.0</version>
+  <description>The car_decision maker package</description>
+  <maintainer email="lee.dk@kaist.ac.kr">Daegyu Lee</maintainer>
+  <maintainer email="hynkis@kaist.ac.kr">Hyunki Seong</maintainer>
+  <author email="yusuke.fujii@tier4.jp">Yusuke Fujii</author>
+  <author email="azumi.suzuki@tier4.jp">Yusuke Fujii</author>
+  <author email="lee.dk@kaist.ac.kr">Daegyu Lee</author>
+  <author email="hynkis@kaist.ac.kr">Hyunki Seong</author>
+  <license>Apache 2</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- <depend>amathutils_lib</depend> -->
+  <!-- <depend>autoware_config_msgs</depend> -->
+  <build_depend>autoware_msgs</build_depend>
+  <build_depend>dynamic_reconfigure</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>jsk_recognition_msgs</build_depend>
+  <build_depend>jsk_rviz_plugins</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>state_machine_lib</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>tf</build_depend>
+  <build_depend>ackermann_msgs</build_depend>
+  <build_depend>visualization_msgs</build_depend>
+
+  <build_export_depend>autoware_msgs</build_export_depend>
+  <build_export_depend>dynamic_reconfigure</build_export_depend>
+  <build_export_depend>geometry_msgs</build_export_depend>
+  <build_export_depend>jsk_recognition_msgs</build_export_depend>
+  <build_export_depend>jsk_rviz_plugins</build_export_depend>
+  <build_export_depend>roscpp</build_export_depend>
+  <build_export_depend>state_machine_lib</build_export_depend>
+  <build_export_depend>std_msgs</build_export_depend>
+  <build_export_depend>tf</build_export_depend>
+  <build_export_depend>ackermann_msgs</build_export_depend>
+  <build_export_depend>visualization_msgs</build_export_depend>
+
+  <exec_depend>autoware_msgs</exec_depend>
+  <exec_depend>dynamic_reconfigure</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>jsk_recognition_msgs</exec_depend>
+  <exec_depend>jsk_rviz_plugins</exec_depend>
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>state_machine_lib</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>tf</exec_depend>
+  <exec_depend>ackermann_msgs</exec_depend>
+  <exec_depend>visualization_msgs</exec_depend>
+
+</package>
